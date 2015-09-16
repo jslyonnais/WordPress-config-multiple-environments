@@ -1,6 +1,5 @@
 # WordPress-config-multiple-environments
-Easy to use, setup multiple environments for Wordpress
-
+Tired of changing your WordPress URL and you're working on multiple environments at the same time (local, staging and prod) ? Get rid of this by changing your wp-config.php file ! Follow this "tutorial" (or take the file as an example).
 
 ## Set up multiple environments using multiple database
 1. You should create at least an default env (for us is "production") and another one for another environment.
