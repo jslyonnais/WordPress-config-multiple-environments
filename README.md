@@ -1,9 +1,9 @@
-# WordPress-config-multiple-environments
+# WordPress config for multiple environments
 Tired of changing your WordPress URL and you're working on multiple environments at the same time (local, staging and prod) ? Get rid of this by changing your wp-config.php file ! Follow this "tutorial" (or take the file as an example).
 
 ## Set up multiple environments using multiple database
 1. You should create at least an default env (for us is "production") and another one for another environment.
-	```
+	```php
 	/* Default environment */
 	$db['production'][DB_NAME] 		= "db_name";
 	$db['production'][DB_USER] 		= "root";
@@ -24,20 +24,20 @@ Tired of changing your WordPress URL and you're working on multiple environments
 	```
 
 2. You gonna need to define when the environment would be applied.
-	```
+	```php
 	/* Define host URL */
 	$hosts['stage']					= "project.stage.url.com";
 	$hosts['local']					= "project.local";
 	```
 
 3. By default, environment should be "production" (in case something went wrong, this should be running on live website ;-) ).
-	```
+	```php
 	/* Define default environment */
 	$environment = "production";
 	```
 
 4. For each custom host you previously entered, get parameters and get the url.
-	```
+	```php
 	foreach ($hosts as $env => $host) 
 		if (preg_match("/(www\.)?$host$/is", $_SERVER["HTTP_HOST"]))
 		{
@@ -46,7 +46,7 @@ Tired of changing your WordPress URL and you're working on multiple environments
 	```
 
 5. Now that you get the info in a variable, define WP database and URL parameters.
-	```
+	```php
 	define('DB_NAME'	, $db[$environment][DB_NAME]);
 	define('DB_USER'	, $db[$environment][DB_USER]);
 	define('DB_PASSWORD', $db[$environment][DB_PASSWORD]);
